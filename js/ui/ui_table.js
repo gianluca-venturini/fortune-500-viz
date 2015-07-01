@@ -84,7 +84,6 @@ function tableRender() {
         .data(row_data)
             .selectAll("td")
             .data(function(row) {
-                console.log(row);
                 return row;
             })
             .enter()

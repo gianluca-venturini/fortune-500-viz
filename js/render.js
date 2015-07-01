@@ -43,8 +43,6 @@ function mapRender(us) {
             heatmapValues.push(value);
         });
 
-        console.log(heatmapValues);
-
         // Normalize the values
         heatmapValues = heatmapValues.map(function(value) { return value/max; });
     }
@@ -236,8 +234,7 @@ function render(companies) {
         .attr("class", "name")
         .attr("x", 0)
         .attr("y", 0)
-        .style("opacity", 0)
-        .text(function(d) { return d.name});
+        .style("opacity", 0);
 
     company_names.selectAll(".name_g")
         .data(data, order)
@@ -256,9 +253,19 @@ function render(companies) {
             // Place the name in the top right of the circle
         .attr("x", function(d) {return  companyCircleRadius(d, max_value) * Math.cos(Math.PI / 4) })
         .attr("y", function(d) {return -companyCircleRadius(d, max_value) * Math.sin(Math.PI / 4) })
-        .text(function(d) { return d.name})
+        .text(function(d) {
+            var label = "";
+            if(config.ranking_visible)
+                label += d.ranking;
+            if(config.company_name_visible && config.ranking_visible)
+                label += " - ";
+            if(config.company_name_visible)
+                label += d.name;
+
+            return label;
+        })
         .transition().duration(1000)
-        .style("opacity", function() {return config.company_name_visible ? 1 : 0});
+        .style("opacity", function() { return config.company_name_visible || config.ranking_visible  ? 1 : 0});
 
     company_names.selectAll(".name")
         .data(data, order)

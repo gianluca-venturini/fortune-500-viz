@@ -7,6 +7,7 @@ var config = {
     scale: 1.0,
     offset: {x: 0, y: 0},
     state_name_visible: true,
+    ranking_visible: false,
     company_name_visible: false,
     dropbox_users_heatmap: false,
 
