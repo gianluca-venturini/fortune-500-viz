@@ -57,7 +57,7 @@ function mapRender(us) {
         .attr("class", "not_zoomable")
         .attr("transform", function() { return "scale("+ (1.0/config.scale) +")"})
         .append("text")
-        .attr("class", "name")
+        .attr("class", "name state")
         .text("name")
         .style("opacity", 0);
 

@@ -1,5 +1,5 @@
 var config = {
-    filter: FILTER.NONE,
+    filter: FILTER.RANKING,
     filter_number: 100,
     filter_offset: 0,
     company_render: RENDER.CONSTANT,
@@ -52,6 +52,9 @@ window.addEventListener("resize", function() {
     }
 });
 
+var previousScale = 1;
+var zoom;
+
 // Entry point of the application
 window.onload = function(e){
 
@@ -69,34 +72,37 @@ window.onload = function(e){
     setTimeout(function(){ loadData(); }, 2000);
 
     // Manage the panning
-    var zoom = d3.behavior.zoom()
+    zoom = d3.behavior.zoom()
         //.scaleExtent([-1, 8])
         .on("zoom", moveMap);
 
     d3.select("#svg")
         .call(zoom);
 
-    function moveMap() {
-        var width = window.innerWidth,
-            height = window.innerHeight;
-
-        var t = d3.event.translate,
-            s = d3.event.scale;
-        // TODO: insert constraints
-        /*
-        t[0] = Math.min(width / 2 * (s - 1), Math.max(width / 2 * (1 - s), t[0]));
-        t[1] = Math.min(height / 2 * (s - 1) + 230 * s, Math.max(height / 2 * (1 - s) - 230 * s, t[1]));
-        */
-        //t[0] = Math.max(0, Math.min(t[0], width - s*50));
-        //t[1] = Math.max(0, Math.min(t[1], height - s*50));
-        zoom.translate(t);
-        d3.select("#zoomable").attr("transform", "translate(" + t + ")scale(" + s + ")");
-        d3.selectAll(".not_zoomable").attr("transform", "scale(" + (1.0 / s) + ")");
-
-        config.scale = s;
-
-    }
 };
+
+// Move the map when zoomed
+function moveMap() {
+    var width = window.innerWidth,
+        height = window.innerHeight;
+
+    var t = zoom.translate(),
+        s = zoom.scale();
+
+    // TODO: insert constraints
+    /*
+     t[0] = Math.min(width / 2 * (s - 1), Math.max(width / 2 * (1 - s), t[0]));
+     t[1] = Math.min(height / 2 * (s - 1) + 230 * s, Math.max(height / 2 * (1 - s) - 230 * s, t[1]));
+     */
+    //t[0] = Math.max(0, Math.min(t[0], width - s*50));
+    //t[1] = Math.max(0, Math.min(t[1], height - s*50));
+    d3.select("#zoomable").attr("transform", "translate(" + t + ")scale(" + s + ")");
+    d3.selectAll(".not_zoomable").attr("transform", "scale(" + (1.0 / s) + ")");
+
+    config.scale = s;
+
+}
+
 
 
 

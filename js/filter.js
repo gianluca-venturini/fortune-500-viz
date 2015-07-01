@@ -24,21 +24,21 @@ function filterData(data) {
             return data;
             break;
 
-        case FILTER.RANKING:
+        case FILTER.RANKING:    // Increasing order
             return data.filter(function(d) {
                 return d.ranking <= config.filter_number + config.filter_offset &&
                     d.ranking > config.filter_offset;
             });
             break;
 
-        case FILTER.NUM_EMPLOYEES:
-            return data.sort(function(a, b){return a.employee - b.employee}).filter(function(d, index) {
+        case FILTER.NUM_EMPLOYEES:  // Decreasing order
+            return data.sort(function(a, b){return b.employee - a.employee}).filter(function(d, index) {
                 return index < config.filter_number;
             });
             break;
 
-        case FILTER.DROPBOX_USERS:
-            return data.sort(function(a, b){return a.dropbox - b.dropbox}).filter(function(d, index) {
+        case FILTER.DROPBOX_USERS:  // Decreasing order
+            return data.sort(function(a, b){return b.dropbox - a.dropbox}).filter(function(d, index) {
                 return index < config.filter_number;
             });
             break;

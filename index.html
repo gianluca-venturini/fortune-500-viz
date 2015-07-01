@@ -12,17 +12,29 @@
 <body>
     <svg id="svg"></svg>
     <div id="filters">
-        <h2 class="center"> Filters </h2>
+        <h2 class="center"> Boolean Filters </h2>
         <button class="active" id="state_names_filter">State names</button>
         <button class="not_active" id="company_names_filter">Company names</button>
+        <h2 class="center"> Company selection </h2>
         <select id="filter" class="active">
-            <option value="NONE">Disable</option>
-            <option value="DROPBOX_USERS">Number Dropbox users</option>
-            <option value="NUM_EMPLOYEES">Number of employees</option>
-            <option value="RANKING">Fortune 500 ranking</option>
+            <option value="FILTER.NONE">Disable</option>
+            <option value="FILTER.DROPBOX_USERS">Number Dropbox users</option>
+            <option value="FILTER.NUM_EMPLOYEES">Number of employees</option>
+            <option value="FILTER.RANKING">Fortune 500 ranking</option>
         </select>
         <input type="text" id="filter_number" placeholder="number"/>
         <input type="text" id="filter_offset" placeholder="offset"/>
+        <h2 class="center"> Company weight metric </h2>
+        <select id="render" class="active">
+            <option value="RENDER.CONSTANT">Constant</option>
+            <option value="RENDER.PROP_EMPLOYEES">Number Dropbox users</option>
+            <option value="RENDER.PROP_DROPBOX">Number of employees</option>
+        </select>
+    </div>
+
+    <div id="zoom">
+        <div id="PLUS" class="zoom_button">+</div>
+        <div id="MINUS" class="zoom_button">-</div>
     </div>
 
     <script src="js/ui/ui_filter.js"></script>
