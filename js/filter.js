@@ -26,7 +26,8 @@ function filterData(data) {
 
         case FILTER.RANKING:
             return data.filter(function(d) {
-                return d.ranking < config.filter_number;
+                return d.ranking <= config.filter_number + config.filter_offset &&
+                    d.ranking > config.filter_offset;
             });
             break;
 

@@ -51,7 +51,6 @@ button {
     cursor: pointer;
     margin: 10px;
 
-    font-family: helvetica;
     padding: 10px;
 
     border-radius: 5px;
@@ -61,12 +60,12 @@ button {
     transition: background-color 0.5s;
 }
 
-button.active {
+.active {
     background-color: rgba(46, 204, 113, 0.8);
     color: white;
 }
 
-button.not_active {
+.not_active {
     background-color: rgba(170, 170, 170, 0.8);
     color: white;
 }
@@ -80,9 +79,22 @@ select {
 
     border-radius: 5px;
 
-    font-family: helvetica;
-
     border: 0;
 
     transition: background-color 0.5s;
+}
+
+input {
+    width: 60px;
+    margin-left: 10px;
+    margin-top: 4px;
+    background-color: rgba(170, 170, 170, 0.8);
+    border: 0;
+    padding: 6px;
+
+    color: white;
+}
+
+input::-webkit-input-placeholder {
+    color: rgba(200, 200, 200, 1);
 }

@@ -38,12 +38,14 @@ function mapRender(us) {
     map.selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
         .enter().append("path")
-        .attr("d", path);
+        .attr("d", path)
+        .style("opacity", 0);
 
     map.selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
-        .transition()
-        .attr("d", path);
+        .attr("d", path)
+        .transition().duration(3000)
+        .style("opacity", 1);
 
     // Render the state names
     names.selectAll(".name_g")
@@ -56,7 +58,8 @@ function mapRender(us) {
         .attr("transform", function() { return "scale("+ (1.0/config.scale) +")"})
         .append("text")
         .attr("class", "name")
-        .text("name");
+        .text("name")
+        .style("opacity", 0);
 
     names.selectAll(".name_g")
         .data(topojson.feature(us, us.objects.states).features)
@@ -67,11 +70,9 @@ function mapRender(us) {
         //.attr("x", function(d) { return path.centroid(d)[0] | 0})
         //.attr("y", function(d) { return path.centroid(d)[1] | 0})
         .text("name")
-        .transition()
-        .attr("opacity", function() {return config.state_name_visible ? 1 : 0});
+        .transition().duration(1000)
+        .style("opacity", function() {return config.state_name_visible ? 1 : 0});
 
-
-    // Render the state names
 }
 
 
@@ -145,15 +146,15 @@ function render(companies) {
     companies.selectAll(".circle")
         .data(data, order)
         .transition().duration(1000)
-        .attr("r", function(d) {return companyCircleRadius(d, max_value); });
+        .attr("r", function(d) {return companyCircleRadius(d, max_value); })
+        .style("opacity", 0.5);
 
-    companies.selectAll(".circle_g")
+    companies.selectAll(".circle")
         .data(data, order)
         .exit()
-        .transition().duration(1000)
+        .transition().duration(1500)
         .style("opacity", 0)
-        .transition().duration(1000)
-        .remove();
+        .attr("r", 0);
 
     // Render company names
     company_names.selectAll(".name_g")
@@ -174,6 +175,7 @@ function render(companies) {
         .attr("class", "name")
         .attr("x", 0)
         .attr("y", 0)
+        .style("opacity", 0)
         .text(function(d) { return d.name});
 
     company_names.selectAll(".name_g")
@@ -192,11 +194,12 @@ function render(companies) {
         .attr("x", function(d) {return  companyCircleRadius(d, max_value) * Math.cos(Math.PI / 4) })
         .attr("y", function(d) {return -companyCircleRadius(d, max_value) * Math.sin(Math.PI / 4) })
         .text(function(d) { return d.name})
-        .transition()
-        .attr("opacity", function() {return config.company_name_visible ? 1 : 0});
+        .transition().duration(1000)
+        .style("opacity", function() {return config.company_name_visible ? 1 : 0});
 
-    company_names.selectAll(".name_g")
+    company_names.selectAll(".name")
         .data(data, order)
         .exit()
-        .remove();
+        .transition().duration(1000)
+        .style("opacity", 0);
 }

@@ -1,6 +1,7 @@
 var config = {
     filter: FILTER.NONE,
     filter_number: 100,
+    filter_offset: 0,
     company_render: RENDER.CONSTANT,
     zoom: 1000,
     scale: 1.0,
@@ -63,7 +64,9 @@ window.onload = function(e){
     d3.select("#zoomable").append("g").attr("id","company_names");
 
     loadMap();
-    loadData();
+
+    // Wait 2 seconds before loading the data
+    setTimeout(function(){ loadData(); }, 2000);
 
     // Manage the panning
     var zoom = d3.behavior.zoom()
