@@ -1,9 +1,16 @@
 var config = {
     filter: FILTER.NONE,
-    filter_number: 0,
+    filter_number: 100,
+    company_render: RENDER.CONSTANT,
     zoom: 1000,
     scale: 1.0,
-    offset: {x: 0, y: 0}
+    offset: {x: 0, y: 0},
+    state_name_visible: true,
+    company_name_visible: true,
+
+    // Company circles
+    max_radius: 50.0,
+    fixed_radius: 3.0
 };
 
 var cachedData;   // Cached data
@@ -14,9 +21,8 @@ function loadData() {
     // Load fortune 500 list
     d3.json("data/fortune_500.json", function(d) {
         cachedData = d;
-        var data = filterData(cachedData);
 
-        render(data);
+        render(cachedData);
 
     }, function(error, rows) {
         console.log("Error on loading fortune_500.csv");
@@ -39,6 +45,10 @@ window.addEventListener("resize", function() {
     if(cachedMap != undefined) {
         mapRender(cachedMap);
     }
+
+    if(cachedData != undefined) {
+        render(cachedData);
+    }
 });
 
 // Entry point of the application
@@ -50,6 +60,7 @@ window.onload = function(e){
     d3.select("#zoomable").append("g").attr("id","map");
     d3.select("#zoomable").append("g").attr("id","state_names");
     d3.select("#zoomable").append("g").attr("id","companies");
+    d3.select("#zoomable").append("g").attr("id","company_names");
 
     loadMap();
     loadData();

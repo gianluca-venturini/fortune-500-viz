@@ -22,3 +22,49 @@ html, body {
 #state_names {
     font-size: 8px;
 }
+
+text {
+    pointer-events: none;   /* Remove all the interactio in the text*/
+}
+
+text.name {
+    text-anchor: start;
+}
+
+div#filters {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 400px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+}
+
+.center {
+    text-align: center;
+}
+
+button {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    margin: 10px;
+
+    font-family: helvetica;
+    padding: 10px;
+
+    border: 0;
+
+    transition: background-color 0.5s;
+}
+
+button.active {
+    background-color: rgba(46, 204, 113, 0.8);
+    color: white;
+}
+
+button.not_active {
+    background-color: rgba(170, 170, 170, 0.8);
+    color: white;
+}
