@@ -54,6 +54,8 @@ button {
     font-family: helvetica;
     padding: 10px;
 
+    border-radius: 5px;
+
     border: 0;
 
     transition: background-color 0.5s;
@@ -67,4 +69,20 @@ button.active {
 button.not_active {
     background-color: rgba(170, 170, 170, 0.8);
     color: white;
+}
+
+select {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    margin: 10px;
+    height: 30px;
+
+    border-radius: 5px;
+
+    font-family: helvetica;
+
+    border: 0;
+
+    transition: background-color 0.5s;
 }

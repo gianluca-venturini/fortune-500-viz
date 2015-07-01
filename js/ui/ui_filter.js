@@ -14,6 +14,14 @@ boolean_filters.forEach(function(filter) {
     });
 });
 
+// Add listeners to filter select list
+$("#filter").change(function() {
+    config.filter= FILTER[$("#filter").val()];
+
+    updateFilters();
+});
+
+
 function updateFilters() {
 
     boolean_filters.forEach(function(filter) {

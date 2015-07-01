@@ -6,11 +6,11 @@ var config = {
     scale: 1.0,
     offset: {x: 0, y: 0},
     state_name_visible: true,
-    company_name_visible: true,
+    company_name_visible: false,
 
     // Company circles
     max_radius: 50.0,
-    fixed_radius: 3.0
+    fixed_radius: 5.0
 };
 
 var cachedData;   // Cached data

@@ -126,9 +126,11 @@ function render(companies) {
         .attr("class", "circle")
         .attr("cx", 0)
         .attr("cy", 0)
-        .attr("r", function(d) {return companyCircleRadius(d, max_value); })
+        .attr("r", 0)
         .style("fill", "red")
         .style("opacity", 0.5);
+        //.transition()
+        //.attr("r", function(d) {return companyCircleRadius(d, max_value); });
 
     companies.selectAll(".circle_g")
         .data(data, order)
@@ -142,12 +144,15 @@ function render(companies) {
 
     companies.selectAll(".circle")
         .data(data, order)
-        .transition()
+        .transition().duration(1000)
         .attr("r", function(d) {return companyCircleRadius(d, max_value); });
 
     companies.selectAll(".circle_g")
         .data(data, order)
         .exit()
+        .transition().duration(1000)
+        .style("opacity", 0)
+        .transition().duration(1000)
         .remove();
 
     // Render company names
