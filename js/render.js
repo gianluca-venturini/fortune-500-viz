@@ -69,7 +69,7 @@ function mapRender(us) {
         .data(topojson.feature(us, us.objects.states).features)
         //.attr("x", function(d) { return path.centroid(d)[0] | 0})
         //.attr("y", function(d) { return path.centroid(d)[1] | 0})
-        .text("name")
+        .text(function(d, i) { return states[i]; })
         .transition().duration(1000)
         .style("opacity", function() {return config.state_name_visible ? 1 : 0});
 

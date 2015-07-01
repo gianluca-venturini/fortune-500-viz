@@ -8,6 +8,7 @@ var config = {
     offset: {x: 0, y: 0},
     state_name_visible: true,
     company_name_visible: false,
+    dropbox_users_heatmap: false,
 
     // Company circles
     max_radius: 50.0,
@@ -15,7 +16,7 @@ var config = {
 };
 
 var cachedData;   // Cached data
-var cachedMap;
+var cachedMap;    // Cached map data
 
 function loadData() {
 
@@ -31,12 +32,12 @@ function loadData() {
 }
 
 function loadMap() {
-    d3.json("data/us.json", function(d) {
+    d3.json("data/us.json", function (d) {
 
         cachedMap = d;
         mapRender(cachedMap);
 
-    }, function(error, rows) {
+    }, function (error, rows) {
         console.log("Error on loading map");
     });
 }
@@ -68,8 +69,8 @@ window.onload = function(e){
 
     loadMap();
 
-    // Wait 2 seconds before loading the data
-    setTimeout(function(){ loadData(); }, 2000);
+    // Wait 1 second before loading the data
+    setTimeout(function(){ loadData(); }, 1000);
 
     // Manage the panning
     zoom = d3.behavior.zoom()

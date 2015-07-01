@@ -14,7 +14,7 @@ function tableRender() {
         }).length == 0;
     });
 
-    var data = [{name: "", city: "City", industry: "Industry", employee: "Employee", dropbox: "Dropbox", dropbox_perc: "Dropbox [%]", ranking: "Fortune Rank", url: "Url"}];
+    var data = [{name: "", city: "<b>City</b>", industry: "<b>Industry</b>", employee: "<b>Employee</b>", dropbox: "<b>Dropbox</b>", dropbox_perc: "<b>Dropbox [%]</b>", ranking: "<b>Fortune Rank</b>", url: "<b>Url</b>"}];
 
     var c = selected_companies.map(function(company) {
 

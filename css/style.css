@@ -103,6 +103,8 @@ button {
 
     border: 0;
 
+    outline: none;
+
     transition: background-color 0.5s;
 }
 
@@ -119,6 +121,9 @@ button {
 .red {
     background-color: rgba(192, 57, 43, 0.8);
     color: white;
+
+    margin-right: auto;
+    margin-left: auto;
 }
 
 select {

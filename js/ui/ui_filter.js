@@ -1,6 +1,7 @@
 boolean_filters = [
     {id: "#state_names_filter", variable: "state_name_visible"},
-    {id: "#company_names_filter", variable: "company_name_visible"}
+    {id: "#company_names_filter", variable: "company_name_visible"},
+    {id: "#dropbox_users_heatmap", variable: "dropbox_users_heatmap"}
 ];
 
 numeric_filters = [
