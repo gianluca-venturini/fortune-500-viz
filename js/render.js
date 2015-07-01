@@ -76,7 +76,7 @@ function mapRender(us) {
     map.selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
         .attr("d", path)
-        .transition().duration(3000)
+        .transition().duration(1500)
         .style("fill", function(d, i) {
             if(config.dropbox_users_heatmap) {
                 // from #ffeda0
