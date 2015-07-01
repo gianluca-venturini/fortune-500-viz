@@ -17,6 +17,38 @@ function mapRender(us) {
     var map = d3.select("#map");
     var names = d3.select("#state_names");
 
+    // Calculate the heatmap value for every state
+    var heatmapValues = [];
+    if(cachedData) {
+        var data = filterData(cachedData);
+        var max = 0;
+        states.forEach(function(state) {
+            var value = 0;
+            data.forEach(function(company) {
+                if(company.city_state == state) {
+                    switch(config.company_render) {
+                        case RENDER.CONSTANT:
+                            value += 1;
+                            break;
+                        case RENDER.PROP_DROPBOX:
+                            value += company.dropbox;
+                            break;
+                        case RENDER.PROP_EMPLOYEES:
+                            value += company.employee;
+                            break;
+                    }
+                }
+            });
+            max = Math.max(max, value);
+            heatmapValues.push(value);
+        });
+
+        console.log(heatmapValues);
+
+        // Normalize the values
+        heatmapValues = heatmapValues.map(function(value) { return value/max; });
+    }
+
     /*
      map.insert("path", ".graticule")
         .datum(topojson.feature(us, us.objects.land))
@@ -45,6 +77,19 @@ function mapRender(us) {
         .data(topojson.feature(us, us.objects.states).features)
         .attr("d", path)
         .transition().duration(3000)
+        .style("fill", function(d, i) {
+            if(config.dropbox_users_heatmap) {
+                // from #ffeda0
+                // to #f03b20
+                var r = 255 * (1-heatmapValues[i]) + 240 * heatmapValues[i];
+                var g = 237 * (1-heatmapValues[i]) + 59 * heatmapValues[i];
+                var b = 180 * (1-heatmapValues[i]) + 32 * heatmapValues[i];
+                return "rgb("+ r +","+ g +","+ b +")";
+            }
+            else {
+                return null;
+            }
+        })
         .style("opacity", 1);
 
     // Render the state names
@@ -79,6 +124,14 @@ function mapRender(us) {
 function render(companies) {
     // Render the companies
     var data = filterData(companies);
+
+    // Insert randomness for companies overlapped
+    data.forEach(function(c) {
+        if(c.radius == undefined) {
+            c.radius = Math.random() * 0.05;
+            c.direction = Math.random() * 2 * Math.PI;
+        }
+    });
 
     var width = window.innerWidth,
         height = window.innerHeight;
@@ -136,10 +189,12 @@ function render(companies) {
     companies.selectAll(".circle_g")
         .data(data, order)
         .attr("transform", function(d) {
+            var lat = d.city_lat + Math.sin(d.direction) * d.radius;
+            var lon = d.city_lon + Math.cos(d.direction) * d.radius;
             return "translate("
-                + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[0] : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -1)
                 + ","
-                + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[1] : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -1)
                 + ")";
         });
 
@@ -166,10 +221,12 @@ function render(companies) {
         .enter().append("g")
         .attr("class", "name_g")
         .attr("transform", function(d) {
+            var lat = d.city_lat + Math.sin(d.direction) * d.radius;
+            var lon = d.city_lon + Math.cos(d.direction) * d.radius;
             return "translate("
-                + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[0] : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -1)
                 + ","
-                + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[1] : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -1)
                 + ")";
         })
         .append("g")
@@ -185,10 +242,12 @@ function render(companies) {
     company_names.selectAll(".name_g")
         .data(data, order)
         .attr("transform", function(d) {
+            var lat = d.city_lat + Math.sin(d.direction) * d.radius;
+            var lon = d.city_lon + Math.cos(d.direction) * d.radius;
             return "translate("
-                + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[0] : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -1)
                 + ","
-                + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[1] : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -1)
                 + ")";
         });
 

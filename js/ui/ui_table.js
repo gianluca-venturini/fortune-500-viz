@@ -66,8 +66,8 @@ function tableRender() {
     row_data.push(data.map(function(company) { return company.dropbox }));
     row_data.push(data.map(function(company) { return company.dropbox_perc }));
     row_data.push(data.map(function(company) { return company.ranking }));
-    row_data.push(data.map(function(company) { return company.url == "Url" ? "" : "<a href='" + company.url + "' target='_blank'>source</a>"; }));
-    row_data.push(data.map(function(company) { return company.url == "Url" ? "" : "<button class='select-delete red' ranking='" + company.ranking + "'>Delete</button>"; }));
+    row_data.push(data.map(function(company) { return company.url == "<b>Url</b>" ? "" : "<a href='" + company.url + "' target='_blank'>source</a>"; }));
+    row_data.push(data.map(function(company) { return company.url == "<b>Url</b>" ? "" : "<button class='select-delete red' ranking='" + company.ranking + "'>Delete</button>"; }));
 
 
 
