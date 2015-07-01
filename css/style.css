@@ -1,0 +1,24 @@
+path {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: .5px;
+}
+
+path:hover {
+    fill: red;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font: 10px sans-serif;
+}
+
+#svg {
+    height: 100%;
+    width: 100%;
+}
+
+#state_names {
+    font-size: 8px;
+}
