@@ -124,7 +124,7 @@ function render(companies) {
         .attr("class", "not_zoomable")
         .attr("transform", function() { return "scale("+ (1.0/config.scale) +")"})
         .append("circle")
-        .attr("class", "circle")
+        .attr("class", "circle pointer")
         .attr("cx", 0)
         .attr("cy", 0)
         .attr("r", 0)
@@ -145,6 +145,10 @@ function render(companies) {
 
     companies.selectAll(".circle")
         .data(data, order)
+        .on("click", function(d) {
+            selected_companies.push(d);
+            tableRender();
+        })
         .transition().duration(1000)
         .attr("r", function(d) {return companyCircleRadius(d, max_value); })
         .style("opacity", 0.5);
