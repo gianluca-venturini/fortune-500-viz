@@ -3,7 +3,7 @@ Walmart,http://fortune.com/fortune500/walmart-1/,Bentonville,AR,General Merchand
 Exxon Mobil,http://fortune.com/fortune500/exxon-mobil-2/,Irving,TX,Petroleum Refining,2,83700,32.924686,-96.959817,24600
 Chevron,http://fortune.com/fortune500/chevron-3/,San Ramon,CA,Petroleum Refining,3,64700,37.756188,-121.952224,3052
 Berkshire Hathaway,http://fortune.com/fortune500/berkshire-hathaway-4/,Omaha,NE,Insurance: Property and Casualty (Stock),4,316000,41.29552,-96.100793,94360
-Apple,http://fortune.com/fortune500/apple-5/,Cupertino,CA,"Computers, Office Equipment",5,97200,,,3254
+Apple,http://fortune.com/fortune500/apple-5/,Cupertino,CA,"Computers, Office Equipment",5,97200,37.30925,-122.0436444,3254
 General Motors,http://fortune.com/fortune500/general-motors-6/,Detroit,MI,Motor Vehicles and Parts,6,216000,42.220718,-83.377081,18012
 Phillips 66,http://fortune.com/fortune500/phillips-66-7/,Houston,TX,Petroleum Refining,7,14000,29.670869,-95.586613,4630
 General Electric,http://fortune.com/fortune500/general-electric-8/,Fairfield,CT,Diversified Financials,8,305000,41.201651,-73.235408,68757
@@ -14,13 +14,13 @@ AT&T,http://fortune.com/fortune500/att-12/,Dallas,TX,Telecommunications,12,24362
 Valero Energy,http://fortune.com/fortune500/valero-energy-13/,San Antonio,TX,Petroleum Refining,13,10065,29.173345,-98.472272,529
 UnitedHealth Group,http://fortune.com/fortune500/unitedhealth-group-14/,Minnetonka,MN,Health Care: Insurance and Managed Care,14,170000,44.913808,-93.484997,38052
 Verizon,http://fortune.com/fortune500/verizon-15/,New York,NY,Telecommunications,15,177300,40.710537,-74.016323,40069
-AmerisourceBergen,http://fortune.com/fortune500/amerisourcebergen-16/,Chesterbrook,PA,Wholesalers: Health Care,16,13500,,,589
+AmerisourceBergen,http://fortune.com/fortune500/amerisourcebergen-16/,Chesterbrook,PA,Wholesalers: Health Care,16,13500,40.0725524,-75.4577859,589
 Fannie Mae,http://fortune.com/fortune500/fannie-mae-17/,Washington,DC,Diversified Financials,17,7600,38.839473,-77.014827,2200
 Costco,http://fortune.com/fortune500/costco-18/,Issaquah,WA,Specialty Retailers: Other,18,153500,47.550911,-122.033517,20147
 HP,http://fortune.com/fortune500/hp-19/,Palo Alto,CA,"Computers, Office Equipment",19,302000,37.418009,-122.127375,60543
 Kroger,http://fortune.com/fortune500/kroger-20/,Cincinnati,OH,Food and Drug Stores,20,400000,39.266803,-84.62832,22831
 JP Morgan Chase,http://fortune.com/fortune500/jp-morgan-chase-21/,New York,NY,Commercial Banks,21,241359,40.710537,-74.016323,33972
-Express Scripts Holding,http://fortune.com/fortune500/express-scripts-holding-22/,St. Louis,MO,Health Care: Pharmacy and Other Services,22,29500,,,6343
+Express Scripts Holding,http://fortune.com/fortune500/express-scripts-holding-22/,St. Louis,MO,Health Care: Pharmacy and Other Services,22,29500,38.6531004,-90.243462,6343
 Bank of America Corp.,http://fortune.com/fortune500/bank-of-america-corp-23/,Charlotte,NC,Commercial Banks,23,223715,35.146685,-80.960421,71205
 IBM,http://fortune.com/fortune500/ibm-24/,Armonk,NY,Information Technology Services,24,412775,41.136002,-73.700942,87552
 Marathon Petroleum,http://fortune.com/fortune500/marathon-petroleum-25/,Findlay,OH,Petroleum Refining,25,45340,41.044903,-83.645656,15429
@@ -40,7 +40,7 @@ Anthem,http://fortune.com/fortune500/anthem-38/,Indianapolis,IN,Health Care: Ins
 MetLife,http://fortune.com/fortune500/metlife-39/,New York,NY,"Insurance: Life, Health (stock)",39,68000,40.710537,-74.016323,26516
 Google,http://fortune.com/fortune500/google-40/,Mountain View,CA,Internet Services and Retailing,40,53600,37.405567,-122.077468,19737
 State Farm Insurance Cos.,http://fortune.com/fortune500/state-farm-insurance-cos-41/,Bloomington,IL,Insurance: Property and Casualty (Mutual),41,73262,40.471618,-88.962466,7848
-Freddie Mac,http://fortune.com/fortune500/freddie-mac-42/,McLean,VA,Diversified Financials,42,4982,,,1748
+Freddie Mac,http://fortune.com/fortune500/freddie-mac-42/,McLean,VA,Diversified Financials,42,4982,38.9317308,-77.1764028,1748
 Comcast,http://fortune.com/fortune500/comcast-43/,Philadelphia,PA,Telecommunications,43,139000,40.089738,-74.978052,47800
 PepsiCo,http://fortune.com/fortune500/pepsi-44/,Purchase,NY,Food Consumer Products,44,271000,41.038396,-73.715629,84446
 United Technologies,http://fortune.com/fortune500/united-technologies-45/,Hartford,CT,Aerospace and Defense,45,211500,41.78596,-72.675807,429
@@ -67,12 +67,12 @@ FedEx,http://fortune.com/fortune500/fedex-65/,Memphis,TN,"Mail, Package, and Fre
 Johnson Controls,http://fortune.com/fortune500/johnson-controls-66/,Milwaukee,WI,Motor Vehicles and Parts,66,168000,43.040738,-87.93566,52536
 Plains GP Holdings,http://fortune.com/fortune500/plains-gp-holdings-67/,Houston,TX,Pipelines,67,5300,29.670869,-95.586613,1702
 World Fuel Services,http://fortune.com/fortune500/world-fuel-services-68/,Miami,FL,Wholesalers: Diversified,68,4041,25.661502,-80.441031,1303
-CHS,http://fortune.com/fortune500/chs-69/,Inver Grove Heights,MN,Food Production,69,11824,,,1487
+CHS,http://fortune.com/fortune500/chs-69/,Inver Grove Heights,MN,Food Production,69,11824,44.8299515,-93.0559004,1487
 American Airlines Group,http://fortune.com/fortune500/american-airlines-group-70/,Fort Worth,TX,Airlines,70,113300,32.901017,-97.332671,21062
 Merck,http://fortune.com/fortune500/merck-71/,Kenilworth,NJ,Pharmaceuticals,71,70000,40.675869,-74.294419,3225
 Best Buy,http://fortune.com/fortune500/best-buy-72/,Richfield,MN,Specialty Retailers: Other,72,125000,44.875731,-93.281351,31118
 Delta Air Lines,http://fortune.com/fortune500/delta-air-lines-73/,Atlanta,GA,Airlines,73,79655,33.937772,-84.271645,2680
-Honeywell International,http://fortune.com/fortune500/honeywell-international-74/,Morris Township,NJ,"Electronics, Electrical Equip.",74,127000,,,2570
+Honeywell International,http://fortune.com/fortune500/honeywell-international-74/,Morris Township,NJ,"Electronics, Electrical Equip.",74,127000,40.7989004,-74.4864574,2570
 HCA Holdings,http://fortune.com/fortune500/hca-holdings-75/,Nashville,TN,Health Care: Medical Facilities,75,197000,36.190145,-86.805264,36558
 Goldman Sachs Group,http://fortune.com/fortune500/goldman-sachs-group-76/,New York,NY,Commercial Banks,76,34000,40.710537,-74.016323,3589
 Tesoro,http://fortune.com/fortune500/tesoro-77/,San Antonio,TX,Petroleum Refining,77,5641,29.173345,-98.472272,1254
@@ -96,7 +96,7 @@ Massachusetts Mutual Life Insurance,http://fortune.com/fortune500/massachusetts-
 DirecTV,http://fortune.com/fortune500/directv-95/,El Segundo,CA,Telecommunications,95,30925,33.924275,-118.411924,11137
 Halliburton,http://fortune.com/fortune500/halliburton-96/,Houston,TX,"Oil and Gas Equipment, Services",96,80000,29.670869,-95.586613,699
 Twenty-First Century Fox,http://fortune.com/fortune500/twenty-first-century-fox-97/,New York,NY,Entertainment,97,27000,40.710537,-74.016323,10466
-3M,http://fortune.com/fortune500/3m-98/,St. Paul,MN,zMiscellaneous,98,89800,,,14532
+3M,http://fortune.com/fortune500/3m-98/,St. Paul,MN,zMiscellaneous,98,89800,44.9397075,-93.1060534,14532
 Sears Holdings,http://fortune.com/fortune500/sears-holdings-99/,Hoffman Estates,IL,General Merchandisers,99,196000,42.073865,-88.108709,10075
 General Dynamics,http://fortune.com/fortune500/general-dynamics-100/,Falls Church,VA,Aerospace and Defense,100,99500,38.88559,-77.180231,37773
 Publix Super Markets,http://fortune.com/fortune500/publix-super-markets-101/,Lakeland,FL,Food and Drug Stores,101,175000,28.123356,-81.984219,15631
@@ -115,21 +115,21 @@ Qualcomm,http://fortune.com/fortune500/qualcomm-113/,San Diego,CA,Network and Ot
 International Paper,http://fortune.com/fortune500/international-paper-114/,Memphis,TN,"Packaging, Containers",114,58000,35.023091,-89.84916,21757
 Occidental Petroleum,http://fortune.com/fortune500/occidental-petroleum-115/,Houston,TX,"Mining, Crude-Oil Production",115,11700,29.670869,-95.586613,517
 Duke Energy,http://fortune.com/fortune500/duke-energy-116/,Charlotte,NC,Utilities: Gas and Electric,116,28344,35.146685,-80.960421,3584
-Rite Aid,http://fortune.com/fortune500/rite-aid-117/,Camp Hill,PA,Food and Drug Stores,117,69420,,,2243
+Rite Aid,http://fortune.com/fortune500/rite-aid-117/,Camp Hill,PA,Food and Drug Stores,117,69420,40.2445601,-76.9257939,2243
 Gilead Sciences,http://fortune.com/fortune500/gilead-sciences-118/,Foster City,CA,Pharmaceuticals,118,7000,37.551614,-122.263577,2723
 Baker Hughes,http://fortune.com/fortune500/baker-hughes-119/,Houston,TX,"Oil and Gas Equipment, Services",119,62000,29.670869,-95.586613,24090
-Emerson Electric,http://fortune.com/fortune500/emerson-electric-120/,St. Louis,MO,"Electronics, Electrical Equip.",120,115100,,,34557
+Emerson Electric,http://fortune.com/fortune500/emerson-electric-120/,St. Louis,MO,"Electronics, Electrical Equip.",120,115100,38.6531004,-90.243462,34557
 EMC,http://fortune.com/fortune500/emc-121/,Hopkinton,MA,Computer Peripherals,121,70000,42.219046,-71.530178,2783
 USAA,http://fortune.com/fortune500/usaa-122/,San Antonio,TX,Insurance: Property and Casualty (Stock),122,27635,29.173345,-98.472272,10061
 Union Pacific,http://fortune.com/fortune500/union-pacific-123/,Omaha,NE,Railroads,123,47201,41.29552,-96.100793,6223
 Northrop Grumman,http://fortune.com/fortune500/northrop-grumman-124/,Falls Church,VA,Aerospace and Defense,124,64300,38.88559,-77.180231,2237
 Alcoa,http://fortune.com/fortune500/alcoa-125/,New York,NY,Metals,125,59000,40.710537,-74.016323,16304
-Capital One Financial,http://fortune.com/fortune500/capital-one-financial-126/,McLean,VA,Commercial Banks,126,46000,,,11901
+Capital One Financial,http://fortune.com/fortune500/capital-one-financial-126/,McLean,VA,Commercial Banks,126,46000,38.9317308,-77.1764028,11901
 National Oilwell Varco,http://fortune.com/fortune500/national-oilwell-varco-127/,Houston,TX,"Oil and Gas Equipment, Services",127,59091,29.670869,-95.586613,16243
 US Foods,http://fortune.com/fortune500/us-foods-128/,Rosemont,IL,Wholesalers: Food and Grocery,128,25000,42.015116,-87.897882,5822
-Raytheon,http://fortune.com/fortune500/raytheon-129/,Waltham,MA,Aerospace and Defense,129,61000,,,23972
+Raytheon,http://fortune.com/fortune500/raytheon-129/,Waltham,MA,Aerospace and Defense,129,61000,42.3889705,-71.2396909,23972
 Time Warner Cable,http://fortune.com/fortune500/time-warner-cable-130/,New York,NY,Telecommunications,130,54615,40.710537,-74.016323,18234
-Arrow Electronics,http://fortune.com/fortune500/arrow-electronics-131/,Centennial,CO,Wholesalers: Electronics and Office Equipment,131,17000,,,1921
+Arrow Electronics,http://fortune.com/fortune500/arrow-electronics-131/,Centennial,CO,Wholesalers: Electronics and Office Equipment,131,17000,39.6022395,-104.8575216,1921
 Aflac,http://fortune.com/fortune500/aflac-132/,Columbus,GA,"Insurance: Life, Health (stock)",132,9525,32.536913,-84.927404,2702
 Staples,http://fortune.com/fortune500/staples-133/,Framingham,MA,Specialty Retailers: Other,133,61738,42.300665,-71.425486,5374
 Abbott Laboratories,http://fortune.com/fortune500/abbott-laboratories-134/,Abbott Park,IL,Medical Products and Equipment,134,77000,42.318901,-87.847819,11251
@@ -144,14 +144,14 @@ Chesapeake Energy,http://fortune.com/fortune500/chesapeake-energy-142/,Oklahoma 
 Xerox,http://fortune.com/fortune500/xerox-143/,Norwalk,CT,Information Technology Services,143,147500,41.101382,-73.401119,8954
 ManpowerGroup,http://fortune.com/fortune500/manpowergroup-144/,Milwaukee,WI,Temporary Help,144,26000,43.040738,-87.93566,6851
 Amgen,http://fortune.com/fortune500/amgen-145/,Thousand Oaks,CA,Pharmaceuticals,145,17900,34.209179,-118.873908,6628
-AbbVie,http://fortune.com/fortune500/abbvie-146/,North Chicago,IL,Pharmaceuticals,146,26000,,,40
+AbbVie,http://fortune.com/fortune500/abbvie-146/,North Chicago,IL,Pharmaceuticals,146,26000,42.3146761,-87.8596053,40
 Danaher,http://fortune.com/fortune500/danaher-147/,Washington,DC,"Scientific,Photographic and Control Equipment",147,71000,38.839473,-77.014827,18776
 Whirlpool,http://fortune.com/fortune500/whirlpool-148/,Benton Harbor,MI,"Electronics, Electrical Equip.",148,100000,42.108594,-86.423417,6875
 PBF Energy,http://fortune.com/fortune500/pbf-energy-149/,Parsippany,NJ,Petroleum Refining,149,1714,40.862106,-74.411663,61
 HollyFrontier,http://fortune.com/fortune500/hollyfrontier-150/,Dallas,TX,Petroleum Refining,150,2686,33.000458,-96.83143,476
 Eli Lilly,http://fortune.com/fortune500/eli-lilly-151/,Indianapolis,IN,Pharmaceuticals,151,39135,39.740599,-86.156944,3599
 Devon Energy,http://fortune.com/fortune500/devon-energy-152/,Oklahoma City,OK,"Mining, Crude-Oil Production",152,5437,35.424157,-97.654729,808
-Progressive,http://fortune.com/fortune500/progressive-153/,Mayfield Village,OH,Insurance: Property and Casualty (Stock),153,26501,,,6743
+Progressive,http://fortune.com/fortune500/progressive-153/,Mayfield Village,OH,Insurance: Property and Casualty (Stock),153,26501,41.5503295,-81.4415913,6743
 Cummins,http://fortune.com/fortune500/cummins-154/,Columbus,IN,Construction and Farm Machinery,154,54600,39.230097,-85.885497,20390
 Icahn Enterprises,http://fortune.com/fortune500/icahn-enterprises-155/,New York,NY,Petroleum Refining,155,65577,40.710537,-74.016323,1461
 AutoNation,http://fortune.com/fortune500/autonation-156/,Fort Lauderdale,FL,"Automotive Retailing, Services",156,24000,26.117586,-80.250587,587
@@ -174,17 +174,17 @@ eBay,http://fortune.com/fortune500/ebay-172/,San Jose,CA,Internet Services and R
 ConAgra Foods,http://fortune.com/fortune500/conagra-foods-173/,Omaha,NE,Food Consumer Products,173,32800,41.29552,-96.100793,11263
 Lear,http://fortune.com/fortune500/lear-174/,Southfield,MI,Motor Vehicles and Parts,174,125200,42.463831,-83.225539,33318
 TRW Automotive Holdings,http://fortune.com/fortune500/trw-automotive-holdings-175/,Livonia,MI,Motor Vehicles and Parts,175,72900,42.395796,-83.377157,5264
-United States Steel,http://fortune.com/fortune500/united-states-steel-176/,Pittsburgh,PA,Metals,176,35500,,,4588
-Penske Automotive Group,http://fortune.com/fortune500/penske-automotive-group-177/,Bloomfield Hills,MI,"Automotive Retailing, Services",177,22100,,,4621
+United States Steel,http://fortune.com/fortune500/united-states-steel-176/,Pittsburgh,PA,Metals,176,35500,40.4313684,-79.9805005,4588
+Penske Automotive Group,http://fortune.com/fortune500/penske-automotive-group-177/,Bloomfield Hills,MI,"Automotive Retailing, Services",177,22100,42.578071,-83.2456289,4621
 AES,http://fortune.com/fortune500/aes-178/,Arlington,VA,Utilities: Gas and Electric,178,18500,38.895375,-77.163295,6557
 Colgate-Palmolive,http://fortune.com/fortune500/colgate-palmolive-179/,New York,NY,Household and Personal Products,179,37700,40.710537,-74.016323,3475
-Global Partners,http://fortune.com/fortune500/global-partners-180/,Waltham,MA,Wholesalers: Diversified,180,1154,,,96
-Thermo Fisher Scientific,http://fortune.com/fortune500/thermo-fisher-scientific-181/,Waltham,MA,"Scientific,Photographic and Control Equipment",181,51000,,,14859
+Global Partners,http://fortune.com/fortune500/global-partners-180/,Waltham,MA,Wholesalers: Diversified,180,1154,42.3889705,-71.2396909,96
+Thermo Fisher Scientific,http://fortune.com/fortune500/thermo-fisher-scientific-181/,Waltham,MA,"Scientific,Photographic and Control Equipment",181,51000,42.3889705,-71.2396909,14859
 PG&E Corp.,http://fortune.com/fortune500/pge-corp-182/,San Francisco,CA,Utilities: Gas and Electric,182,22581,37.718968,-122.409577,7824
-NextEra Energy,http://fortune.com/fortune500/nextera-energy-183/,Juno Beach,FL,Utilities: Gas and Electric,183,13800,,,542
+NextEra Energy,http://fortune.com/fortune500/nextera-energy-183/,Juno Beach,FL,Utilities: Gas and Electric,183,13800,26.8750572,-80.0596697,542
 American Electric Power,http://fortune.com/fortune500/american-electric-power-184/,Columbus,OH,Utilities: Gas and Electric,184,18529,39.923024,-82.866432,1956
 Baxter International,http://fortune.com/fortune500/baxter-international-185/,Deerfield,IL,Medical Products and Equipment,185,65500,42.170494,-87.859033,19835
-Centene,http://fortune.com/fortune500/centene-186/,St. Louis,MO,Health Care: Insurance and Managed Care,186,13400,,,2400
+Centene,http://fortune.com/fortune500/centene-186/,St. Louis,MO,Health Care: Insurance and Managed Care,186,13400,38.6531004,-90.243462,2400
 Starbucks,http://fortune.com/fortune500/starbucks-187/,Seattle,WA,Food Services,187,191000,47.648845,-122.396357,17729
 Gap,http://fortune.com/fortune500/gap-188/,San Francisco,CA,Specialty Retailers: Apparel,188,141000,37.718968,-122.409577,11234
 Bank of New York Mellon Corp.,http://fortune.com/fortune500/bank-of-new-york-mellon-corp-189/,New York,NY,Commercial Banks,189,50300,40.710537,-74.016323,18128

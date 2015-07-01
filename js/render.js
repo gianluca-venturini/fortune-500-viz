@@ -166,9 +166,9 @@ function render(companies) {
         .attr("class", "circle_g")
         .attr("transform", function(d) {
             return "translate("
-            + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[0] : -1)
+            + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[0] : -10000)
             + ","
-            + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[1] : -1)
+            + (d.city_lon != undefined ? projection([d.city_lon, d.city_lat])[1] : -10000)
             + ")";
         })
         .append("g")
@@ -190,9 +190,9 @@ function render(companies) {
             var lat = d.city_lat + Math.sin(d.direction) * d.radius;
             var lon = d.city_lon + Math.cos(d.direction) * d.radius;
             return "translate("
-                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -10000)
                 + ","
-                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -10000)
                 + ")";
         });
 
@@ -222,9 +222,9 @@ function render(companies) {
             var lat = d.city_lat + Math.sin(d.direction) * d.radius;
             var lon = d.city_lon + Math.cos(d.direction) * d.radius;
             return "translate("
-                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -10000)
                 + ","
-                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -10000)
                 + ")";
         })
         .append("g")
@@ -242,9 +242,9 @@ function render(companies) {
             var lat = d.city_lat + Math.sin(d.direction) * d.radius;
             var lon = d.city_lon + Math.cos(d.direction) * d.radius;
             return "translate("
-                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[0]  : -10000)
                 + ","
-                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -1)
+                + (d.city_lon != undefined ? projection([lon, lat])[1]  : -10000)
                 + ")";
         });
 

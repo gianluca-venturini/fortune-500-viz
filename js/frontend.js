@@ -28,7 +28,7 @@ function loadData() {
         render(cachedData);
 
     }, function(error, rows) {
-        console.log("Error on loading fortune_500.csv");
+        console.log("Error on loading fortune_500.csv " + error);
     });
 }
 
