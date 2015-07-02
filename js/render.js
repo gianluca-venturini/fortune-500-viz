@@ -227,10 +227,7 @@ function render(companies) {
         .attr("cx", 0)
         .attr("cy", 0)
         .attr("r", 0)
-        .style("fill", "red")
         .style("opacity", 0.5);
-        //.transition()
-        //.attr("r", function(d) {return companyCircleRadius(d, max_value); });
 
     companies.selectAll(".circle_g")
         .data(data, order)
@@ -252,7 +249,14 @@ function render(companies) {
         })
         .transition().duration(1000)
         .attr("r", function(d) {return companyCircleRadius(d, max_value); })
-        .style("opacity", 0.5);
+        .style("opacity", 0.5)
+        .style("fill", function() {
+            if(config.dropbox_users_heatmap) {
+                return "black";
+            } else {
+                return "red";
+            }
+        });
 
     companies.selectAll(".circle")
         .data(data, order)
