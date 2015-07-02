@@ -1,5 +1,7 @@
 // Static variables
 var statisticValues = [];
+var piechartTimeout;
+var pieChartEnabled = false;
 
 function mapRender(us, completeRerender) {
     // Render the map
@@ -236,6 +238,16 @@ function render(companies) {
         .on("mouseout", function() {
             // Remove pichart
             pieChartRender(0, 0, null);
+
+            // Remove the text label
+            labelRender(0, 0, null);
+
+            // Stop the pie chart timer
+            clearTimeout(piechartTimeout);
+            piechartTimeout = undefined;
+
+            // Disable the piechart
+            pieChartEnabled = false;
         })
         .on("click", function(d) {
             selected_companies.push(d);
@@ -348,22 +360,59 @@ function render(companies) {
 
         var percentage = d.dropbox/ d.employee; // Calculate the percentage of adoption
 
+        // Start the timeout if it isn't started yet
+        if(!piechartTimeout) {
+            piechartTimeout = setTimeout(function () {
+                pieChartEnabled = true;
+
+                // Draw the piechart the first time
+                if(config.company_name_visible) {
+                    pieChartRender(x, y, percentage);
+                }
+                else {
+                    pieChartRender(x, y, percentage, d.name);
+                }
+            }, 2000);   // 2 seconds
+        }
+
+        // Pie chart enabled
+        if(pieChartEnabled) {
+
+            // Draw the piechart
+            if(config.company_name_visible) {
+                pieChartRender(x, y, percentage);
+            }
+            else {
+                pieChartRender(x, y, percentage, d.name);
+            }
+        }
+        // Pie chart not enabled
+        else {
+            // Remove pie chart
+            pieChartRender(x, y, null);
+        }
+
+        // Create the right text
+        var text = null;
         if(config.company_name_visible) {
-            pieChartRender(x, y, percentage);
+            text = {
+                l1: "Employees: " + numberToFormattedString(d.employee),
+                l2: "Dropbox: " + numberToFormattedString(d.dropbox),
+                l3: null,
+                l4: null
+            };
         }
         else {
-            pieChartRender(x, y, percentage, d.name);
+            text = {
+                l1: d.name,
+                l2: "Employees: " + numberToFormattedString(d.employee),
+                l3: "Dropbox: " + numberToFormattedString(d.dropbox),
+                l4: null
+            };
         }
 
-        var text = {
-            l1: d.name,
-            l2: "Employees: " + d.employee,
-            l3: "Dropbox: " + d.dropbox,
-            l4: null
-        };
-
+        // Draw the label text
         labelRender(x, y, text);
-
     }
 }
 
@@ -387,22 +436,22 @@ function labelRender(x, y, text) {
             .append("text");
 
         fixed.append('tspan')
-            .attr('x', 5)
-            .attr('dy', 0)
+            .attr('x', -40)
+            .attr('y', -35)
             .attr("id", "label_state");
 
         fixed.append('tspan')
-            .attr('x', 5)
+            .attr('x', -40)
             .attr('dy', 10)
             .attr("id", "label_company");
 
         fixed.append('tspan')
-            .attr('x', 5)
+            .attr('x', -40)
             .attr('dy', 10)
             .attr("id", "label_employee");
 
         fixed.append('tspan')
-            .attr('x', 5)
+            .attr('x', -40)
             .attr('dy', 10)
             .attr("id", "label_dropbox");
 
