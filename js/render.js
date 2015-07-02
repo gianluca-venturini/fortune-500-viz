@@ -475,8 +475,6 @@ function labelRender(x, y, text) {
 
 function pieChartRender(x, y, percentage, title) {
 
-    console.log("Piechart render");
-
     var pie_chart_colors = ["#f03b20", "#ffeda0"];
 
     if(!percentage) {
