@@ -62,6 +62,7 @@ window.onload = function(e){
 
     // Create the layers on the svg
     d3.select("#svg").append("g").attr("id","zoomable");
+    d3.select("#svg").append("g").attr("id","fixed");
 
     d3.select("#zoomable").append("g").attr("id","map");
     d3.select("#zoomable").append("g").attr("id","state_names");

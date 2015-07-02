@@ -17,28 +17,42 @@ function mapRender(us) {
     var map = d3.select("#map");
     var names = d3.select("#state_names");
 
-    // Calculate the heatmap value for every state
+    // Calculate the heatmap value and parameters for every state
     var heatmapValues = [];
+    var statisticValues = [];
     if(cachedData) {
         var data = filterData(cachedData);
         var max = 0;
         states.forEach(function(state) {
             var value = 0;
+            var numCompanies = 0;
+            var numEmployee = 0;
+            var numDropbox = 0;
             data.forEach(function(company) {
                 if(company.city_state == state) {
-                    switch(config.company_render) {
-                        case RENDER.CONSTANT:
-                            value += 1;
-                            break;
-                        case RENDER.PROP_DROPBOX:
-                            value += company.dropbox;
-                            break;
-                        case RENDER.PROP_EMPLOYEES:
-                            value += company.employee;
-                            break;
-                    }
+                    numCompanies += 1;
+                    numEmployee += company.employee;
+                    numDropbox += company.dropbox;
                 }
             });
+            switch(config.company_render) {
+                case RENDER.CONSTANT:
+                    value = numCompanies;
+                    break;
+                case RENDER.PROP_DROPBOX:
+                    value = numDropbox;
+                    break;
+                case RENDER.PROP_EMPLOYEES:
+                    value = numEmployee;
+                    break;
+            }
+            statisticValues.push({
+                numCompanies: numCompanies,
+                numEmployee: numEmployee,
+                numDropbox: numDropbox
+            });
+
+            // Update the maximum value
             max = Math.max(max, value);
             heatmapValues.push(value);
         });
@@ -74,6 +88,11 @@ function mapRender(us) {
     map.selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
         .attr("d", path)
+        .on("mouseover", mouseOver)
+        .on("mousemove", mouseOver)
+        .on("mouseout", function() {
+            labelRender(0, 0, null);
+        })
         .transition().duration(1500)
         .style("fill", function(d, i) {
             if(config.dropbox_users_heatmap) {
@@ -115,6 +134,32 @@ function mapRender(us) {
         .text(function(d, i) { return states[i]; })
         .transition().duration(1000)
         .style("opacity", function() {return config.state_name_visible ? 1 : 0});
+
+
+    // Mouse over function
+    function mouseOver(d, i) {
+        var value = statisticValues[i];
+
+        if(value == undefined && cachedData != undefined && cachedMap != undefined) {
+            mapRender(cachedMap);
+            return;
+        }
+        else if(value == undefined) {
+            return;
+        }
+
+        var mouse = d3.mouse(this.parentNode.parentNode.parentNode);
+        var x = mouse[0];
+        var y = mouse[1];
+
+        var text = {
+            state: states[i],
+            company: value.numCompanies,
+            employee: value.numEmployee,
+            dropbox: value.numDropbox};
+
+        labelRender(x, y, text);
+    }
 
 }
 
@@ -272,4 +317,65 @@ function render(companies) {
         .exit()
         .transition().duration(1000)
         .style("opacity", 0);
+}
+
+function labelRender(x, y, text) {
+    console.log(x);
+    console.log(y);
+
+    if(!text) {
+        /*
+        d3.select("#fixed")
+            .selectAll("text")
+            .remove();
+        */
+    }
+    else {
+        var data = [[]];
+
+        // Create new text
+        var fixed = d3.select("#fixed")
+            .selectAll("g")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("id", "label_g")
+            .append("text");
+
+        fixed.append('tspan')
+            .attr('x', 5)
+            .attr('dy', 0)
+            .attr("id", "label_state");
+
+        fixed.append('tspan')
+            .attr('x', 5)
+            .attr('dy', 10)
+            .attr("id", "label_company");
+
+        fixed.append('tspan')
+            .attr('x', 5)
+            .attr('dy', 10)
+            .attr("id", "label_employee");
+
+        fixed.append('tspan')
+            .attr('x', 5)
+            .attr('dy', 10)
+            .attr("id", "label_dropbox");
+
+        // Update the text
+        d3.select("#label_g")
+            .attr("transform", "translate(" + x + "," + y + ")");
+
+        d3.select("#label_state")
+            .text("State: " + text.state);
+
+        d3.select("#label_company")
+            .text("Company: " + text.company);
+
+        d3.select("#label_employee")
+            .text("Employee: " + text.employee);
+
+        d3.select("#label_dropbox")
+            .text("Dropbox: " + text.dropbox);
+    }
 }
