@@ -1,7 +1,7 @@
 // Static variables
 var statisticValues = [];
 
-function mapRender(us) {
+function mapRender(us, completeRerender) {
     // Render the map
 
     var width = window.innerWidth,
@@ -111,6 +111,13 @@ function mapRender(us) {
             }
         })
         .style("opacity", 1);
+
+    // Recalculate path only if necessary
+    if(completeRerender) {
+        map.selectAll("path")
+            .data(topojson.feature(us, us.objects.states).features)
+            .attr("d", path);
+    }
 
     // Render the state names
     names.selectAll(".name_g")
@@ -330,7 +337,7 @@ function labelRender(x, y, text) {
 
     if(!text) {
         d3.select("#fixed")
-            .selectAll("g")
+            .selectAll(".label_g")
             .remove();
     }
     else {

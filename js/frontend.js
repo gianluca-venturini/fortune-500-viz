@@ -46,7 +46,7 @@ function loadMap() {
 // On window resize fix the rendering
 window.addEventListener("resize", function() {
     if(cachedMap != undefined) {
-        mapRender(cachedMap);
+        mapRender(cachedMap, true);
     }
 
     if(cachedData != undefined) {
