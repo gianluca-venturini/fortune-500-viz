@@ -230,6 +230,15 @@ function render(companies) {
         .attr("class", "not_zoomable")
         .attr("transform", function() { return "scale("+ (1.0/config.scale) +")"})
         .append("circle")
+        .on("mouseover", mouseOver)
+        .on("mousemove", mouseOver)
+        .on("mouseout", function() {
+            pieChartRender(0, 0, null);
+        })
+        .on("click", function(d) {
+            selected_companies.push(d);
+            tableRender();
+        })
         .attr("class", "circle pointer")
         .attr("cx", 0)
         .attr("cy", 0)
@@ -250,10 +259,6 @@ function render(companies) {
 
     companies.selectAll(".circle")
         .data(data, order)
-        .on("click", function(d) {
-            selected_companies.push(d);
-            tableRender();
-        })
         .transition().duration(1000)
         .attr("r", function(d) {return companyCircleRadius(d, max_value); })
         .style("opacity", 0.5)
@@ -331,13 +336,25 @@ function render(companies) {
         .exit()
         .transition().duration(1000)
         .style("opacity", 0);
+
+    // Mouse over function
+    function mouseOver(d) {
+
+        var mouse = d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode);
+        var x = mouse[0];
+        var y = mouse[1];
+
+        var percentage = d.dropbox/ d.employee; // Calculate the percentage of adoption
+
+        pieChartRender(x, y, percentage);
+    }
 }
 
 function labelRender(x, y, text) {
 
     if(!text) {
         d3.select("#fixed")
-            .selectAll(".label_g")
+            .select("#label_g")
             .remove();
     }
     else {
@@ -387,5 +404,111 @@ function labelRender(x, y, text) {
 
         d3.select("#label_dropbox")
             .text("Dropbox: " + text.dropbox);
+    }
+}
+
+function pieChartRender(x, y, percentage, title) {
+
+    console.log(x);
+
+    var pie_chart_colors = ["#f03b20", "#ffeda0"];
+
+    if(!percentage) {
+        d3.select("#fixed")
+            .select("#pie_g")
+            .remove();
+    }
+    else {
+        var fakeData = [[]];
+
+        var initialData = [
+            {label: "Dropbox users", count: 0},
+            {label: "Others", count: 100}
+        ];
+
+        var data = [
+            {label: "Dropbox users", count: percentage * 100},
+            {label: "Others", count: (1-percentage)*100}
+        ];
+
+        // Create the pie chart model
+        var arc = d3.svg.arc()
+            .innerRadius(config.pie_chart.radius - config.pie_chart.donut_width)
+            .outerRadius(config.pie_chart.radius);
+
+        var pie = d3.layout.pie()
+            .value(function(d) { return d.count; })
+            .sort(null);
+
+        // Create new group if not present
+        d3.select("#fixed")
+            .selectAll("g")
+            .data(fakeData)
+            .enter()
+            .append("g")
+            .attr("id", "pie_g")
+            .attr("transform", "translate(" + x + "," + y + ")");
+
+        // Move the group if coordinate are changed
+        d3.select("#pie_g")
+            .attr("transform", "translate(" + x + "," + y + ")");
+
+        // Create path if not present
+        d3.select("#pie_g")
+            .selectAll('path')
+            .data(pie(initialData))
+            .enter()
+            .append('path')
+            .attr('d', arc)
+            .each(function(d) { this._current = d; })
+            .style('fill', function(d, i) {
+                return pie_chart_colors[i];
+            });
+
+        d3.select("#pie_g")
+            .selectAll('path')
+            .data(pie(data))
+            .transition().duration(1000)
+            .attrTween('d', function(d) {
+                var interpolate = d3.interpolate(this._current, d);
+                this._current = interpolate(0);
+                return function(t) {
+                    return arc(interpolate(t));
+                };
+            })
+            .style('fill', function(d, i) {
+                return pie_chart_colors[i];
+            });
+
+        // Render text
+        d3.select("#pie_g")
+            .selectAll('text')
+            .data(pie(data))
+            .enter()
+            .append("text")
+            .attr("transform", function(d){
+                var x = 0;
+                var y = - config.pie_chart.radius * 1.2;
+                return "translate(" + x + "," + y + ")";
+            });
+
+        d3.select("#pie_g")
+            .selectAll('text')
+            .data(pie(data))
+            .transition().duration(500)
+            .attr("transform", function(d){
+                var centroid = arc.centroid(d);
+                var x = centroid[0] * 1.2;
+                var y = centroid[1] * 1.2;
+                return "translate(" + x + "," + y + ")";
+            })
+            .attr("text-anchor", "left")
+            .text( function(d, i) {
+                if(i == 0) {
+                    return "Adoption: " + (percentage * 100).toFixed(0) + "%";
+                }
+            })
+
+
     }
 }

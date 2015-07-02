@@ -13,7 +13,13 @@ var config = {
 
     // Company circles
     max_radius: 50.0,
-    fixed_radius: 5.0
+    fixed_radius: 5.0,
+
+    // Pie chart
+    pie_chart: {
+        radius: 80,
+        donut_width: 20
+    }
 };
 
 var cachedData;   // Cached data
