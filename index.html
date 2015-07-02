@@ -26,6 +26,10 @@
             <option value="FILTER.NUM_EMPLOYEES">Number of employees</option>
             <option value="FILTER.RANKING">Fortune 500 ranking</option>
         </select>
+        <div>
+            <div style="display: inline-block; margin-left: 10px;">Show only:</div>
+            <div style="display: inline-block; margin-left: 20px;">Start at:</div>
+        </div>
         <input type="text" id="filter_number" placeholder="number"/>
         <input type="text" id="filter_offset" placeholder="offset"/>
         <h2 class="center"> Company weight metric </h2>
@@ -52,6 +56,27 @@
             </tbody>
         </table>
     </div>
+
+    <div id="legend" class="no_interaction" style="opacity: 0;">
+        <div id="legend_title">Title</div>
+        <div class="legend_row">
+            <div class="legend_square" style="background-color: #f03b20;"></div>
+            <div class="legend_text" id="legend1"></div>
+        </div>
+        <div class="legend_row">
+            <div class="legend_square" style="background-color: #f27549;"></div>
+            <div class="legend_text" id="legend2"></div>
+        </div>
+        <div class="legend_row">
+            <div class="legend_square" style="background-color: #f7af74;"></div>
+            <div class="legend_text" id="legend3"></div>
+        </div>
+        <div class="legend_row">
+            <div class="legend_square" style="background-color: #ffeda0;"></div>
+            <div class="legend_text" id="legend4"></div>
+        </div>
+    </div>
+
     <script src="js/ui/ui_filter.js"></script>
     <script src="js/ui/ui_table.js"></script>
 </body>

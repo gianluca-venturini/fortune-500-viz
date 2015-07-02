@@ -25,9 +25,9 @@ function mapRender(us, completeRerender) {
     // Calculate the heatmap value and parameters for every state
     var heatmapValues = [];
     statisticValues = [];
+    var max = 0;
     if(cachedData) {
         var data = filterData(cachedData);
-        var max = 0;
         states.forEach(function(state) {
             var value = 0;
             var numCompanies = 0;
@@ -146,6 +146,28 @@ function mapRender(us, completeRerender) {
         .text(function(d, i) { return states[i]; })
         .transition().duration(1000)
         .style("opacity", function() {return config.state_name_visible ? 1 : 0});
+
+    // if heatmap active activate the legend
+    if(config.dropbox_users_heatmap) {
+        var title;
+
+        switch(config.company_render) {
+            case RENDER.CONSTANT: title = "Companies in state"; break;
+            case RENDER.PROP_EMPLOYEES: title = "Number of employees"; break;
+            case RENDER.PROP_DROPBOX: title = "Dropbox users"; break;
+        }
+
+        legendRender([
+            numberToFormattedString(max),
+            numberToFormattedString(max/4*3),
+            numberToFormattedString(max/4*2),
+            numberToFormattedString(max/4)
+        ], title);
+    }
+    else {
+        // Remove the legend
+        legendRender(null);
+    }
 
 
     // Mouse over function
@@ -593,4 +615,29 @@ function pieChartRender(x, y, percentage, title) {
             .attr("text-anchor", "middle")
             .text(title)
     }
+}
+
+function legendRender(values, title) {
+    if(!values) {
+        d3.select("#legend")
+            .transition().duration(1000)
+            .style("opacity", 0);
+        return;
+    }
+
+    d3.select("#legend_title")
+        .html(title);
+
+    d3.select("#legend")
+        .transition().duration(1000)
+        .style("opacity", 1);
+
+    d3.select("#legend1")
+        .html(values[0]);
+    d3.select("#legend2")
+        .html(values[1]);
+    d3.select("#legend3")
+        .html(values[2]);
+    d3.select("#legend4")
+        .html(values[3]);
 }
