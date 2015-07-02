@@ -2,6 +2,7 @@
 var statisticValues = [];
 var piechartTimeout;
 var pieChartEnabled = false;
+var mouse;
 
 function mapRender(us, completeRerender) {
     // Render the map
@@ -189,7 +190,7 @@ function mapRender(us, completeRerender) {
         var text = {
             l1: "State: " + states[i],
             l2: "Companies: " + value.numCompanies,
-            l3: "Employees" + numberToFormattedString(value.numEmployee),
+            l3: "Employees: " + numberToFormattedString(value.numEmployee),
             l4: "Dropbox: " + numberToFormattedString(value.numDropbox)
         };
 
@@ -376,7 +377,7 @@ function render(companies) {
     // Mouse over function
     function mouseOver(d) {
 
-        var mouse = d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode);
+        mouse = d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode);
         var x = mouse[0];
         var y = mouse[1];
 
@@ -385,6 +386,9 @@ function render(companies) {
         // Start the timeout if it isn't started yet
         if(!piechartTimeout) {
             piechartTimeout = setTimeout(function () {
+                var x = mouse[0];
+                var y = mouse[1];
+
                 pieChartEnabled = true;
 
                 // Draw the piechart the first time

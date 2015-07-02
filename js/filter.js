@@ -33,13 +33,15 @@ function filterData(data) {
 
         case FILTER.NUM_EMPLOYEES:  // Decreasing order
             return data.sort(function(a, b){return b.employee - a.employee}).filter(function(d, index) {
-                return index < config.filter_number;
+                return index < config.filter_number + config.filter_offset &&
+                    index >= config.filter_offset;
             });
             break;
 
         case FILTER.DROPBOX_USERS:  // Decreasing order
             return data.sort(function(a, b){return b.dropbox - a.dropbox}).filter(function(d, index) {
-                return index < config.filter_number;
+                return index < config.filter_number + config.filter_offset &&
+                    index >= config.filter_offset;
             });
             break;
     }
