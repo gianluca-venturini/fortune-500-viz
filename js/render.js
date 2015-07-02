@@ -1,3 +1,6 @@
+// Static variables
+var statisticValues = [];
+
 function mapRender(us) {
     // Render the map
 
@@ -19,7 +22,7 @@ function mapRender(us) {
 
     // Calculate the heatmap value and parameters for every state
     var heatmapValues = [];
-    var statisticValues = [];
+    statisticValues = [];
     if(cachedData) {
         var data = filterData(cachedData);
         var max = 0;
@@ -83,16 +86,16 @@ function mapRender(us) {
         .data(topojson.feature(us, us.objects.states).features)
         .enter().append("path")
         .attr("d", path)
-        .style("opacity", 0);
-
-    map.selectAll("path")
-        .data(topojson.feature(us, us.objects.states).features)
-        .attr("d", path)
+        .style("opacity", 0)
         .on("mouseover", mouseOver)
         .on("mousemove", mouseOver)
         .on("mouseout", function() {
             labelRender(0, 0, null);
-        })
+        });
+
+    map.selectAll("path")
+        .data(topojson.feature(us, us.objects.states).features)
+        //.attr("d", path)
         .transition().duration(1500)
         .style("fill", function(d, i) {
             if(config.dropbox_users_heatmap) {
@@ -155,8 +158,8 @@ function mapRender(us) {
         var text = {
             state: states[i],
             company: value.numCompanies,
-            employee: value.numEmployee,
-            dropbox: value.numDropbox};
+            employee: numberToFormattedString(value.numEmployee),
+            dropbox: numberToFormattedString(value.numDropbox)};
 
         labelRender(x, y, text);
     }
@@ -320,15 +323,11 @@ function render(companies) {
 }
 
 function labelRender(x, y, text) {
-    console.log(x);
-    console.log(y);
 
     if(!text) {
-        /*
         d3.select("#fixed")
-            .selectAll("text")
+            .selectAll("g")
             .remove();
-        */
     }
     else {
         var data = [[]];

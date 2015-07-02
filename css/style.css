@@ -90,9 +90,6 @@ div#selected_companies {
     position: fixed;
     top: 0;
     left: 0;
-    /* width: 200px; */
-    height: 400px;
-    /* background-color: rgba(0,0,0,0.5); */
 }
 
 .center {

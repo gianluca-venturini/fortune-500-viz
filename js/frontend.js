@@ -81,7 +81,6 @@ window.onload = function(e){
 
     d3.select("#svg")
         .call(zoom);
-
 };
 
 // Move the map when zoomed
