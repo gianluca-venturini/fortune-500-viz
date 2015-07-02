@@ -346,7 +346,12 @@ function render(companies) {
 
         var percentage = d.dropbox/ d.employee; // Calculate the percentage of adoption
 
-        pieChartRender(x, y, percentage);
+        if(config.company_name_visible) {
+            pieChartRender(x, y, percentage);
+        }
+        else {
+            pieChartRender(x, y, percentage, d.name);
+        }
     }
 }
 
@@ -397,10 +402,10 @@ function labelRender(x, y, text) {
             .text("State: " + text.state);
 
         d3.select("#label_company")
-            .text("Company: " + text.company);
+            .text("Companies: " + text.company);
 
         d3.select("#label_employee")
-            .text("Employee: " + text.employee);
+            .text("Employees: " + text.employee);
 
         d3.select("#label_dropbox")
             .text("Dropbox: " + text.dropbox);
@@ -408,8 +413,6 @@ function labelRender(x, y, text) {
 }
 
 function pieChartRender(x, y, percentage, title) {
-
-    console.log(x);
 
     var pie_chart_colors = ["#f03b20", "#ffeda0"];
 
@@ -480,12 +483,13 @@ function pieChartRender(x, y, percentage, title) {
                 return pie_chart_colors[i];
             });
 
-        // Render text
+        // Render label text
         d3.select("#pie_g")
-            .selectAll('text')
+            .selectAll('.pie_label')
             .data(pie(data))
             .enter()
             .append("text")
+            .attr("class", "pie_label")
             .attr("transform", function(d){
                 var x = 0;
                 var y = - config.pie_chart.radius * 1.2;
@@ -493,7 +497,7 @@ function pieChartRender(x, y, percentage, title) {
             });
 
         d3.select("#pie_g")
-            .selectAll('text')
+            .selectAll('.pie_label')
             .data(pie(data))
             .transition().duration(500)
             .attr("transform", function(d){
@@ -507,7 +511,26 @@ function pieChartRender(x, y, percentage, title) {
                 if(i == 0) {
                     return "Adoption: " + (percentage * 100).toFixed(0) + "%";
                 }
+            });
+
+        // Render title text
+        d3.select("#pie_g")
+            .selectAll('.pie_title')
+            .data(fakeData)
+            .enter()
+            .append("text")
+            .attr("class", "pie_title");
+
+        d3.select("#pie_g")
+            .selectAll('.pie_title')
+            .data(pie(data))
+            .attr("transform", function(d){
+                var x = 0;
+                var y = - config.pie_chart.radius * 1.1;
+                return "translate(" + x + "," + y + ")";
             })
+            .attr("text-anchor", "middle")
+            .text(title)
 
 
     }

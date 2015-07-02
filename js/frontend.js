@@ -85,6 +85,8 @@ window.onload = function(e){
         //.scaleExtent([-1, 8])
         .on("zoom", moveMap);
 
+    zoom.scaleExtent([1, 100]);
+
     d3.select("#svg")
         .call(zoom);
 };

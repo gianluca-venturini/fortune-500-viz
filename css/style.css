@@ -221,3 +221,8 @@ a:visited {
 a:hover {
     color: #2980b9;
 }
+
+text.pie_title {
+    font-size: 12px;
+    font-weight: bold;
+}
