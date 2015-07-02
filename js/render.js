@@ -163,10 +163,11 @@ function mapRender(us, completeRerender) {
         var y = mouse[1];
 
         var text = {
-            state: states[i],
-            company: value.numCompanies,
-            employee: numberToFormattedString(value.numEmployee),
-            dropbox: numberToFormattedString(value.numDropbox)};
+            l1: "State: " + states[i],
+            l2: "Companies: " + value.numCompanies,
+            l3: "Employees" + numberToFormattedString(value.numEmployee),
+            l4: "Dropbox: " + numberToFormattedString(value.numDropbox)
+        };
 
         labelRender(x, y, text);
     }
@@ -233,6 +234,7 @@ function render(companies) {
         .on("mouseover", mouseOver)
         .on("mousemove", mouseOver)
         .on("mouseout", function() {
+            // Remove pichart
             pieChartRender(0, 0, null);
         })
         .on("click", function(d) {
@@ -352,6 +354,16 @@ function render(companies) {
         else {
             pieChartRender(x, y, percentage, d.name);
         }
+
+        var text = {
+            l1: d.name,
+            l2: "Employees: " + d.employee,
+            l3: "Dropbox: " + d.dropbox,
+            l4: null
+        };
+
+        labelRender(x, y, text);
+
     }
 }
 
@@ -367,7 +379,7 @@ function labelRender(x, y, text) {
 
         // Create new text
         var fixed = d3.select("#fixed")
-            .selectAll("g")
+            .selectAll(".label_g")
             .data(data)
             .enter()
             .append("g")
@@ -399,20 +411,22 @@ function labelRender(x, y, text) {
             .attr("transform", "translate(" + x + "," + y + ")");
 
         d3.select("#label_state")
-            .text("State: " + text.state);
+            .text(text.l1);
 
         d3.select("#label_company")
-            .text("Companies: " + text.company);
+            .text(text.l2);
 
         d3.select("#label_employee")
-            .text("Employees: " + text.employee);
+            .text(text.l3);
 
         d3.select("#label_dropbox")
-            .text("Dropbox: " + text.dropbox);
+            .text(text.l4);
     }
 }
 
 function pieChartRender(x, y, percentage, title) {
+
+    console.log("Piechart render");
 
     var pie_chart_colors = ["#f03b20", "#ffeda0"];
 
@@ -445,7 +459,7 @@ function pieChartRender(x, y, percentage, title) {
 
         // Create new group if not present
         d3.select("#fixed")
-            .selectAll("g")
+            .selectAll(".pie_g")
             .data(fakeData)
             .enter()
             .append("g")
@@ -531,7 +545,5 @@ function pieChartRender(x, y, percentage, title) {
             })
             .attr("text-anchor", "middle")
             .text(title)
-
-
     }
 }
